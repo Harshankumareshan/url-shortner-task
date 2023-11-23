@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: rgb(237, 225, 210);">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="background-color: rgb(126, 123, 123);">
+                <h1>URL SHORTENER</h1>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <form action="/create" method="POST">
+                <div class="col-lg-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="paste your long URL"
+                            aria-label="paste your long URL" aria-describedby="button-addon2" name="longUrl" />
+                        <div class="input-group-append">
+                            
+                            <input type="submit" value="Submit" class="btn btn-outline-secondary" style="margin-left: 10%; background-color: rgb(126,123,123,);">
+                        </div>
+                    </div>
+            </form>
+            <div class="row">
+                <% for(var i=0;i< allUrlData.length;i++){ %>
+                    <div class="col-lg-3">
+                        <div class="card border-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header"> Total Clicks <%= allUrlData[i]. clickCount %>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <a href="http://localhost:4000/<%- allUrlData[i].shortUrl %>"
+                                        target="_blank">http://localhost:4000/<%- allUrlData[i].shortUrl %></a>
+                                </h6>
+                                <p class="card-text">
+                                    <%- allUrlData[i].longUrl %>
+                                </p>
+                                <a href="/delete/<%= allUrlData[i].id %>" class="btn btn-sm btn-danger">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
